@@ -12,6 +12,7 @@ import { LoginComponent } from './component/login/login.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { ThanakPageComponent } from './thanak-page/thanak-page.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ThanakPageComponent } from './thanak-page/thanak-page.component';
     LoginComponent,
     ShoppingCartComponent,
     ShippingComponent,
-    ThanakPageComponent
+    ThanakPageComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
