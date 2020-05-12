@@ -1,0 +1,79 @@
+<div class="container">
+  <h3>Shopping Cart</h3>
+  <div class="col-xl-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title row">
+          <div class="col-xl-8">
+            <h4>You have 8 items in your shopping cart</h4>
+          </div>
+          <div class="col-xl-4"><button type="button" class="btn btn-primary btn-lg btn-block">Clear Shopping
+              Cart</button></div>
+        </div>
+        <hr>
+        <div class="card-text row">
+          <div class="col-xl-4">
+            <h5>Product</h5>
+          </div>
+          <div class="col-xl-5 text-center">
+            <h5>Quantity</h5>
+          </div>
+          <div class="col-xl-2 offset-xl-1">
+            <h5>Price</h5>
+          </div>
+        </div>
+        <hr>
+
+        <div>
+          <div class="card-text row tableBody" *ngFor="let item of cartList">
+            <div class="col-xl-4">{{item.name}}</div>
+            <div class="col-xl-5 row d-flex justify-content-around">
+              <!-- <div class="col-xl-2"> <button type="button" class="btn btn-secondary"><i class="fa fa-plus"></i></button>
+              </div> -->
+              <div class="col-xl-4 d-flex justify-content-around">1 in cart</div>
+              <!-- <div class="col-xl-2"> <button type="button" class="btn btn-secondary"><i
+                    class="fa fa-minus"></i></button>
+              </div> -->
+            </div>
+            <div class="col-xl-2 offset-xl-1 d-flex justify-content-around">Rs.{{item.price}}</div>
+          </div>
+          <!-- 
+          <div class="card-text row tableBody">
+            <div class="col-xl-4">Bag</div>
+            <div class="col-xl-5 row d-flex justify-content-around">
+              <div class="col-xl-2"> <button type="button" class="btn btn-secondary"><i class="fa fa-plus"></i></button>
+              </div>
+              <div class="col-xl-4 d-flex justify-content-around">1 in cart</div>
+              <div class="col-xl-2"> <button type="button" class="btn btn-secondary"><i
+                    class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="col-xl-2 offset-xl-1">Rs.200.00</div>
+          </div>
+
+          <div class="card-text row tableBody">
+            <div class="col-xl-4">Bag</div>
+            <div class="col-xl-5 row d-flex justify-content-around">
+              <div class="col-xl-2"> <button type="button" class="btn btn-secondary"><i class="fa fa-plus"></i></button>
+              </div>
+              <div class="col-xl-4 d-flex justify-content-around">1 in cart</div>
+              <div class="col-xl-2"> <button type="button" class="btn btn-secondary"><i
+                    class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="col-xl-2 offset-xl-1">Rs.200.00</div>
+          </div> -->
+        </div>
+        <hr>
+        <div class="card-text row tableBody">
+          <div class="col-xl-5 row d-flex justify-content-around  offset-xl-4">
+            <h4>Totel</h4>
+          </div>
+          <div class="col-xl-2 offset-xl-1">Rs.{{totalPrice}}</div>
+        </div>
+        <hr>
+        <button type="button" class="btn btn-primary">Check Out</button>
+      </div>
+    </div>
+  </div>
+</div>

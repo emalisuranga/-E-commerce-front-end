@@ -1,0 +1,25 @@
+.card-img-top{
+    width: 200px;
+    height: 200px;
+}
+
+.container{
+    margin-top: 20px;
+}
+
+.card{
+    margin-top: 10px;
+}
+
+.cartbtn{
+    padding-left: 80px;
+    padding-right: 80px;
+    width: max-content;
+}
+
+.addinBtn{
+    text-decoration:none;
+    cursor:default;
+    color:grey;
+    pointer-events:none;
+}
