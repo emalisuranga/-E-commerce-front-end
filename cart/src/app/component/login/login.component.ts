@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from "@angular/forms";
 import { Router } from '@angular/router';
+import { GenaralService } from '../../service/genaral.service';
+import swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
@@ -12,6 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(
+    private globalService: GenaralService,
     private router: Router
   ) {
     this.loginForm = this.loginFormGroup();
@@ -36,19 +40,20 @@ export class LoginComponent implements OnInit {
 
     console.log(data)
 
-    // this.globalService.login(data).subscribe(serverResp => {
-    //   if (serverResp['status']) {
-    //     console.log(serverResp['status'])
-    //     this.router.navigate(['/profile']);
-    //   } else {
-    //     swal.fire(
-    //       'Login Error!',
-    //       'Please check user name and password!',
-    //       'error'
-    //     )
-    //     this.router.navigate(['']);
-    //   }
-    // });
+    this.globalService.login(data).subscribe(serverResp => {
+      if (serverResp['status']) {
+        console.log(serverResp['status'])
+        // this.globalService.currentUserData(data)
+        this.router.navigate(['/home']);
+      } else {
+        swal.fire(
+          'Login Error!',
+          'Please check user name and password!',
+          'error'
+        )
+        this.router.navigate(['']);
+      }
+    });
   }
 
 }

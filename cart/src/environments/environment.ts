@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   cart: [],
-  itemCount: 0
+  itemCount: 0,
+  isLogin: false,
 };
 
 /*

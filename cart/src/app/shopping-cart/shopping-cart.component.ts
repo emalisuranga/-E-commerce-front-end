@@ -11,6 +11,7 @@ export class ShoppingCartComponent implements OnInit {
 
   public cartList: any = [];
   totalPrice: number = 0;
+  isLogin: boolean;
 
   constructor(
     private service: GenaralService,
@@ -18,15 +19,21 @@ export class ShoppingCartComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.service.sharedCart.subscribe(cartList => this.cartList = cartList);
-    console.log(this.cartList)
-    if (this.cartList.length == 0) {
-      this.router.navigate(['home']);
+    this.service.sharedIsLogin.subscribe(isLogin => this.isLogin = isLogin)
+    if (this.isLogin) {
+      this.service.sharedCart.subscribe(cartList => this.cartList = cartList);
+      console.log(this.cartList)
+      if (this.cartList.length == 0) {
+        this.router.navigate(['home']);
+      }
+
+      this.cartList.forEach(element => {
+        this.totalPrice += element.price
+      });
+    } else {
+      this.router.navigate(['']);
     }
 
-    this.cartList.forEach(element => {
-      this.totalPrice += element.price
-    });
   }
 
 }

@@ -1,6 +1,6 @@
 <!-- <app-login></app-login> -->
-<router-outlet></router-outlet>
-<!-- <app-nav *ngIf="isLogin"></app-nav>
+<router-outlet *ngIf="!isLogin "></router-outlet>
+<app-nav *ngIf="isLogin == true"></app-nav>
 <div *ngIf="isLogin">
     <router-outlet></router-outlet>
-</div> -->
+</div>
