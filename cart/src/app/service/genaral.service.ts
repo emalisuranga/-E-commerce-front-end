@@ -79,8 +79,27 @@ export class GenaralService {
     }));
   }
 
-  getCotrory() {
+  getCategory() {
+    let data1 = [];
+    let data = {
+      email: 'emalwork194@gmail.com',
+      password: '1qaz2wsx',
+    }
+    let url = "http://127.0.0.1:8000/api/login";
+    return this.http.post(url, {
+      email: data.email,
+      password: data.password,
+    }).pipe(tap(resp => {
+      if (resp['status']) {
+        data1 = [
+          'Ladies Clothes', 'Shoes', 'Men Clothes'
+        ];
+        return data1;
+      }
 
+    }), catchError((error) => {
+      return error.statusText;
+    }));
   }
 
   getAllIteam() {
@@ -88,7 +107,38 @@ export class GenaralService {
   }
 
   getSelectItem(data) {
+    let data1 = [];
+    let url = "http://127.0.0.1:8000/api/login";
+    return this.http.post(url, {
+      email: 'emalwork194@gmail.com',
+      password: '1qaz2wsx',
+    }).pipe(tap(resp => {
+      if (resp['status']) {
+        data1 = [
+          {
+            image: '../../../assets/images/pexels-photo-1721934.jpeg',
+            name: 'Just For You Mom Ribbon',
+            price: 100,
+            isAdding: false
+          },
+          {
+            image: '../../../assets/images/pexels-photo-1721934.jpeg',
+            name: 'Just For',
+            price: 150,
+            isAdding: false
+          },
+          {
+            image: '../../../assets/images/pexels-photo-1721934.jpeg',
+            name: 'Mom Ribbon Cake',
+            price: 200,
+            isAdding: false
+          }]
+        return data1;
+      }
 
+    }), catchError((error) => {
+      return error.statusText;
+    }));
   }
 
   setOrderDetailes(data) {

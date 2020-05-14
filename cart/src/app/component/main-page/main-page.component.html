@@ -5,11 +5,8 @@
         <a href="#" class="list-group-item list-group-item-action active">
           All Category
         </a>
-        <a href="#" class="list-group-item list-group-item-action">Ladies Clothes
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">Shoes
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">Men Clothes
+        <a class="list-group-item list-group-item-action" *ngFor="let type of categoryType"
+          (click)="getIteam(type)">{{type}}
         </a>
       </div>
     </div>

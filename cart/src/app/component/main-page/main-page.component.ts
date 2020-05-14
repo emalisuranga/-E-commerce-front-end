@@ -14,6 +14,7 @@ export class MainPageComponent implements OnInit {
   cartItem: any = [];
   clickBtn: any = [];
   isLogin: boolean;
+  categoryType: any = [];
 
 
   constructor(
@@ -28,6 +29,13 @@ export class MainPageComponent implements OnInit {
     if (!this.isLogin) {
       this.router.navigate(['']);
     }
+
+    this.service.getCategory().subscribe(
+      res => {
+        console.log(res)
+        this.categoryType = res
+      }
+    )
     this.items = [
       {
         image: '../../../assets/images/pexels-photo-1721934.jpeg',
@@ -74,6 +82,16 @@ export class MainPageComponent implements OnInit {
     this.clickBtn.push(i)
     this.service.currentItemCount(this.cartItem.length);
     this.service.currentCart(this.cartItem);
+  }
+
+  getIteam(type) {
+
+    this.service.getSelectItem(type).subscribe(
+      res => {
+        this.categoryType = [];
+        this.categoryType = res
+      }
+    )
   }
 
 }
