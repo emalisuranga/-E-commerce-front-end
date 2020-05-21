@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class NavComponent implements OnInit {
 
   public itemCount: number;
+  public isLogin: boolean;
 
   constructor(
     private service: GenaralService,
@@ -20,11 +21,17 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.service.sharedItemCount.subscribe(itemCount => this.itemCount = itemCount);
+    this.service.sharedIsLogin.subscribe(isLogin => this.isLogin = isLogin);
   }
 
   logOut() {
     this.service.currentIsLogin(false);
     this.router.navigate(['']);
+  }
+
+  onLogin() {
+    this.service.currentIsLogin(true);
+    this.router.navigate(["/login"]);
   }
 
 }

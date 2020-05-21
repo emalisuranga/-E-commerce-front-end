@@ -1,60 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { FormControl, Validators, FormGroup } from "@angular/forms";
-import { Router } from '@angular/router';
-import { GenaralService } from '../../service/genaral.service';
-import swal from 'sweetalert2';
-
+import { Router } from "@angular/router";
+import { GenaralService } from "../../service/genaral.service";
+import swal from "sweetalert2";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
-
   loginForm: FormGroup;
 
-  constructor(
-    private globalService: GenaralService,
-    private router: Router
-  ) {
+  constructor(private globalService: GenaralService, private router: Router) {
     this.loginForm = this.loginFormGroup();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   loginFormGroup() {
     return new FormGroup({
       email: new FormControl("", Validators.required),
-      password: new FormControl("", Validators.required)
+      password: new FormControl("", Validators.required),
     });
   }
 
   public onSubmit() {
-    console.log(this.loginForm)
+    console.log(this.loginForm);
     let data = {
-      email: this.loginForm.get('email').value,
-      password: this.loginForm.get('password').value
-    }
+      email: this.loginForm.get("email").value,
+      password: this.loginForm.get("password").value,
+    };
 
-    console.log(data)
+    console.log(data);
 
-    this.globalService.login(data).subscribe(serverResp => {
-      if (serverResp['status']) {
-        console.log(serverResp['status'])
+    this.globalService.login(data).subscribe((serverResp) => {
+      console.log(serverResp);
+      if (serverResp["status"] == "true") {
+        console.log(serverResp["status"]);
+        this.globalService.currentIsLogin(true);
+
         // this.globalService.currentUserData(data)
-        this.router.navigate(['/home']);
+        this.router.navigate([""]);
+
+        console.log("Success!!!");
       } else {
         swal.fire(
-          'Login Error!',
-          'Please check user name and password!',
-          'error'
-        )
-        this.router.navigate(['']);
+          "Login Error!",
+          "Please check user name and password!",
+          "error"
+        );
+        this.router.navigate([""]);
       }
     });
   }
-
 }
-

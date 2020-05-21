@@ -13,16 +13,8 @@
           <span class="sr-only">(current)</span></a>
       </li>
     </ul>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        User
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" routerLink="/shopping-cart" routerLinkActive="active">Manage Orders</a>
-        <a class="dropdown-item" href="#" (click)="logOut()">Log Out</a>
-      </div>
-    </div>
+    <button *ngIf="!isLogin" type="submit" class="btn btn-secondary" id="submit" (click)="onLogin()">Login</button>
+    <button *ngIf="isLogin" type="submit" class="btn btn-secondary" id="submit" (click)="logOut()">logOut</button>
 
   </div>
 </nav>

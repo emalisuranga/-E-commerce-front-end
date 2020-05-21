@@ -8,7 +8,7 @@ import { GenaralService } from './service/genaral.service';
 })
 export class AppComponent implements OnInit {
   title = 'cart';
-  isLogin: any;
+  isLogin: boolean;
 
   constructor(
     private globalService: GenaralService,
@@ -16,8 +16,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isLogin = this.globalService.sharedIsLogin.subscribe(isLogin => this.isLogin = isLogin);;
-
-    console.log(this.isLogin)
+    this.globalService.sharedIsLogin.subscribe(isLogin => this.isLogin = isLogin);
   }
 }
